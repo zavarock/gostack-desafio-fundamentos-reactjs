@@ -54,7 +54,7 @@ export const Footer = styled.section`
     }
 
     &:disabled {
-      cursor: none;
+      cursor: not-allowed;
       background: #969cb3;
       color: #ddd;
     }

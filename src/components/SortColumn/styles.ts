@@ -1,14 +1,15 @@
 import styled, { css } from 'styled-components';
+
 import { Link } from 'react-router-dom';
 
 import chevronIcon from '../../assets/chevron.svg';
 
-interface ColumnProps {
+interface SortLinkProps {
   $isActive: boolean;
   $isDescending: boolean;
 }
 
-export const Column = styled(Link)<ColumnProps>`
+export const SortLink = styled(Link)<SortLinkProps>`
   display: inline-flex;
   align-items: center;
   color: inherit;

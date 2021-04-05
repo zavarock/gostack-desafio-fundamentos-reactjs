@@ -8,7 +8,7 @@ import total from '../../assets/total.svg';
 import api from '../../services/api';
 
 import Header from '../../components/Header';
-import TableSortColumn from '../../components/TableSortColumn';
+import SortColumn from '../../components/SortColumn';
 
 import formatValue from '../../utils/formatValue';
 import formatDate from '../../utils/formatDate';
@@ -87,16 +87,16 @@ const Dashboard: React.FC = () => {
             <thead>
               <tr>
                 <th>
-                  <TableSortColumn column="title">Título</TableSortColumn>
+                  <SortColumn name="title">Título</SortColumn>
                 </th>
                 <th>
-                  <TableSortColumn column="value">Preço</TableSortColumn>
+                  <SortColumn name="value">Preço</SortColumn>
                 </th>
                 <th>
-                  <TableSortColumn column="category">Categoria</TableSortColumn>
+                  <SortColumn name="category">Categoria</SortColumn>
                 </th>
                 <th>
-                  <TableSortColumn column="created_at">Título</TableSortColumn>
+                  <SortColumn name="created_at">Título</SortColumn>
                 </th>
               </tr>
             </thead>
