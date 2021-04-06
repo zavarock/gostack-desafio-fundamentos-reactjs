@@ -47,7 +47,23 @@ const Dashboard: React.FC = () => {
     }
 
     api.get(`/transactions`, { params: queryParams }).then(response => {
-      setTransactions(response.data.transactions);
+      setTransactions(
+        response.data.transactions.map((transaction: Transaction) => {
+          const createdAt = new Date(transaction.created_at);
+
+          return {
+            id: transaction.id,
+            title: transaction.title,
+            value: transaction.value,
+            formattedValue: formatValue(transaction.value),
+            formattedDate: formatDate(createdAt),
+            type: transaction.type,
+            category: { title: transaction.category.title },
+            createdAt,
+          };
+        }),
+      );
+
       setBalance(response.data.balance);
     });
   }, [sort]);
@@ -107,10 +123,10 @@ const Dashboard: React.FC = () => {
                   <td className="title">{transaction.title}</td>
                   <td className={transaction.type}>
                     {transaction.type === 'outcome' && '- '}
-                    {formatValue(transaction.value)}
+                    {transaction.formattedValue}
                   </td>
                   <td>{transaction.category.title}</td>
-                  <td>{formatDate(new Date(transaction.created_at))}</td>
+                  <td>{transaction.formattedDate}</td>
                 </tr>
               ))}
             </tbody>
